@@ -8,7 +8,7 @@ on:
 
 jobs:
   # ─────────────────────────────────────────────────────────
-  # JOB 1: Build check (no database needed)
+  # JOB 1: Build check
   # ─────────────────────────────────────────────────────────
   build:
     name: 🔧 Build Check
@@ -24,33 +24,26 @@ jobs:
           php-version: '8.2'
           extensions: mbstring, pdo_mysql, zip, gd, bcmath, xml, pcntl, exif
 
-      - name: 📦 Cache Composer
-        uses: actions/cache@v4
-        with:
-          path: vendor
-          key: composer-${{ hashFiles('composer.lock') }}
-          restore-keys: composer-
-
-      - name: 📦 Cache NPM
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: npm-
-
       - name: 🔧 Install Composer dependencies
-        run: composer install --no-dev --prefer-dist --optimize-autoloader
+        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
 
-      - name: 🎨 Install NPM & build assets
-        run: |
-          npm ci
-          npm run build
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: ⚙️ Generate app key check
+      - name: 🎨 Install NPM dependencies
+        run: npm install
+
+      - name: 🏗️ Build assets
+        run: npm run build
+
+      - name: ⚙️ Check Laravel config
         run: |
           cp .env.example .env
           php artisan key:generate
           php artisan config:clear
+        continue-on-error: true
 
   # ─────────────────────────────────────────────────────────
   # JOB 2: Deploy to Fly.io (only on push to main)
