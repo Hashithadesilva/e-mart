@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+echo "==> Configuring Nginx port..."
+sed -i "s/__PORT__/${PORT:-80}/g" /etc/nginx/nginx.conf
+
 echo "==> Linking storage..."
 php artisan storage:link --no-interaction 2>/dev/null || true
 
