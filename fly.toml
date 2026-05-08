@@ -2,7 +2,6 @@
 # Run `fly launch` first to create the app, then use this config.
 
 app = 'e-mart'
-primary_region = 'sin'   # Singapore — closest to Sri Lanka
 
 [build]
   dockerfile = 'Dockerfile'
