@@ -1,0 +1,40 @@
+# fly.toml — Fly.io configuration for E-Mart
+# Run `fly launch` first to create the app, then use this config.
+
+app = 'e-mart'
+primary_region = 'sin'   # Singapore — closest to Sri Lanka
+
+[build]
+  dockerfile = 'Dockerfile'
+
+[env]
+  PORT     = '8080'
+  APP_ENV  = 'production'
+  APP_PORT = '8080'
+
+# All secrets (APP_KEY, DB_*, STRIPE_*, GOOGLE_*) must be set via:
+# fly secrets set KEY=value
+
+[http_service]
+  internal_port       = 8080
+  force_https         = true        # enforces HTTPS, HTTP → HTTPS redirect
+  auto_stop_machines  = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes           = ['app']
+
+  [http_service.concurrency]
+    type       = 'connections'
+    hard_limit = 25
+    soft_limit = 20
+
+[[vm]]
+  memory   = '512mb'
+  cpu_kind = 'shared'
+  cpus     = 1
+
+# Persistent volume for uploaded files (product images etc.)
+# Create with: fly volumes create emart_storage --size 1 --region sin
+[[mounts]]
+  source      = 'emart_storage'
+  destination = '/var/www/html/storage/app'

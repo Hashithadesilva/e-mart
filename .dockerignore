@@ -1,0 +1,35 @@
+# ─── App ───────────────────────────────────────────────
+.env
+.env.backup
+.env.production
+
+# ─── Dev / Test scratch files ───────────────────────────
+test-*.php
+test_*.php
+check-*.php
+cleanup-*.php
+convert-*.php
+update-*.php
+
+# ─── Build / Dev dependencies ───────────────────────────
+/node_modules
+/.git
+/.github
+/.gitignore
+/.editorconfig
+/.vscode
+/.idea
+/tests
+/phpunit.xml
+*.log
+
+# ─── Laravel storage (runtime, not app code) ────────────
+/storage/logs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/views
+
+# ─── Misc ───────────────────────────────────────────────
+Thumbs.db
+.DS_Store
+README.md
