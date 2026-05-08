@@ -64,6 +64,11 @@ COPY . .
 # Copy built Vite assets from stage 1
 COPY --from=node-builder /app/public/build ./public/build
 
+# Fix storage + cache permissions before composer dump-autoload triggers package:discover
+RUN mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache storage/logs bootstrap/cache \
+ && chown -R www-data:www-data storage bootstrap/cache \
+ && chmod -R 775 storage bootstrap/cache
+
 # Complete autoloader generation
 RUN composer dump-autoload --optimize
 
@@ -73,12 +78,7 @@ COPY docker/supervisord.conf  /etc/supervisor/conf.d/supervisord.conf
 COPY docker/entrypoint.sh     /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Fix storage + cache permissions
-RUN mkdir -p storage/framework/{sessions,views,cache} storage/logs bootstrap/cache \
- && chown -R www-data:www-data storage bootstrap/cache \
- && chmod -R 775 storage bootstrap/cache
-
-# Fly.io expects port 8080
-EXPOSE 8080
+# Railway uses dynamic $PORT (default 80 is configured in entrypoint)
+EXPOSE 80
 
 ENTRYPOINT ["/entrypoint.sh"]
