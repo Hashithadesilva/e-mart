@@ -89,7 +89,7 @@ Route::post('/stripe/webhook', [App\Http\Controllers\StripeWebhookController::cl
 // Temporary route to seed database
 Route::get('/seed-database', function () {
     try {
-        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'ProductSeeder', '--force' => true]);
         return '<h1>Database seeded successfully!</h1><br><a href="/products">Click here to see your products</a>';
     } catch (\Exception $e) {
         return 'Error: ' . $e->getMessage();
