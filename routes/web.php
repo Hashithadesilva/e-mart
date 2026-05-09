@@ -85,3 +85,13 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 Route::post('/stripe/webhook', [App\Http\Controllers\StripeWebhookController::class, 'handleWebhook'])
     ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class])
     ->name('stripe.webhook');
+
+// Temporary route to seed database
+Route::get('/seed-database', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+        return '<h1>Database seeded successfully!</h1><br><a href="/products">Click here to see your products</a>';
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+});
