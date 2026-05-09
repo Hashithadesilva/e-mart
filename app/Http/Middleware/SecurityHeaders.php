@@ -37,10 +37,10 @@ class SecurityHeaders
         if (app()->environment('production')) {
             $response->headers->set('Content-Security-Policy', 
                 "default-src 'self'; " .
-                "script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net js.stripe.com; " .
-                "style-src 'self' 'unsafe-inline' cdn.jsdelivr.net; " .
+                "script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net js.stripe.com cdn.tailwindcss.com; " .
+                "style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com fonts.bunny.net; " .
                 "img-src 'self' data: https:; " .
-                "font-src 'self' data:; " .
+                "font-src 'self' data: fonts.gstatic.com fonts.bunny.net; " .
                 "connect-src 'self' api.stripe.com; " .
                 "frame-src js.stripe.com;"
             );
