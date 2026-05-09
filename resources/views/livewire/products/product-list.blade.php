@@ -65,7 +65,7 @@
                         <div class="card product-card">
                             <div style="position: relative;">
                                 <a href="/products/{{ $product->id }}">
-                                    <img src="{{ $product->image_path ?? '/images/placeholder-product.png' }}" 
+                                    <img src="{{ $product->image_path ?? 'https://placehold.co/400x300/f3f4f6/9ca3af?text=No+Image' }}" 
                                          alt="{{ $product->name }}" 
                                          class="product-image">
                                 </a>

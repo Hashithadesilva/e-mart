@@ -15,7 +15,7 @@
         <div class="grid grid-cols-2 gap-lg">
             <!-- Product Image -->
             <div>
-                <img src="{{ $product->image_path ?? '/images/placeholder-product.png' }}" 
+                <img src="{{ $product->image_path ?? 'https://placehold.co/400x300/f3f4f6/9ca3af?text=No+Image' }}" 
                      alt="{{ $product->name }}" 
                      style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); object-fit: cover;">
             </div>
@@ -83,7 +83,7 @@
                     @foreach($relatedProducts as $related)
                         <div class="product-card">
                             <a href="/products/{{ $related->id }}" style="text-decoration: none; color: inherit;">
-                                <img src="{{ $related->image_path ?? '/images/placeholder-product.png' }}" 
+                                <img src="{{ $related->image_path ?? 'https://placehold.co/400x300/f3f4f6/9ca3af?text=No+Image' }}" 
                                      alt="{{ $related->name }}" 
                                      class="product-image" 
                                      style="width: 100%; height: 150px; object-fit: cover;">
