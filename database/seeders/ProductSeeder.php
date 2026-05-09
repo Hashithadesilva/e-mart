@@ -23,6 +23,7 @@ class ProductSeeder extends Seeder
                 'price' => 999.99,
                 'stock_quantity' => 50,
                 'low_stock_threshold' => 10,
+                'image_path' => 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?q=80&w=400&auto=format&fit=crop',
             ],
             [
                 'category' => 'Smartphones',
@@ -31,6 +32,7 @@ class ProductSeeder extends Seeder
                 'price' => 899.99,
                 'stock_quantity' => 45,
                 'low_stock_threshold' => 10,
+                'image_path' => 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=400&auto=format&fit=crop',
             ],
             [
                 'category' => 'Smartphones',
@@ -39,6 +41,7 @@ class ProductSeeder extends Seeder
                 'price' => 699.99,
                 'stock_quantity' => 8,
                 'low_stock_threshold' => 10,
+                'image_path' => 'https://images.unsplash.com/photo-1598327105666-5b89351cb315?q=80&w=400&auto=format&fit=crop',
             ],
             
             // Laptops
@@ -49,6 +52,7 @@ class ProductSeeder extends Seeder
                 'price' => 2499.99,
                 'stock_quantity' => 25,
                 'low_stock_threshold' => 5,
+                'image_path' => 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=400&auto=format&fit=crop',
             ],
             [
                 'category' => 'Laptops',
@@ -57,6 +61,7 @@ class ProductSeeder extends Seeder
                 'price' => 1799.99,
                 'stock_quantity' => 30,
                 'low_stock_threshold' => 8,
+                'image_path' => 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?q=80&w=400&auto=format&fit=crop',
             ],
             [
                 'category' => 'Laptops',
@@ -65,6 +70,7 @@ class ProductSeeder extends Seeder
                 'price' => 1599.99,
                 'stock_quantity' => 20,
                 'low_stock_threshold' => 5,
+                'image_path' => 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?q=80&w=400&auto=format&fit=crop',
             ],
             
             // Tablets
@@ -75,6 +81,7 @@ class ProductSeeder extends Seeder
                 'price' => 1099.99,
                 'stock_quantity' => 35,
                 'low_stock_threshold' => 10,
+                'image_path' => 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=400&auto=format&fit=crop',
             ],
             [
                 'category' => 'Tablets',
@@ -83,6 +90,7 @@ class ProductSeeder extends Seeder
                 'price' => 799.99,
                 'stock_quantity' => 28,
                 'low_stock_threshold' => 8,
+                'image_path' => 'https://images.unsplash.com/photo-1589739900243-4b52cd9b104e?q=80&w=400&auto=format&fit=crop',
             ],
             
             // Accessories
@@ -93,6 +101,7 @@ class ProductSeeder extends Seeder
                 'price' => 39.99,
                 'stock_quantity' => 100,
                 'low_stock_threshold' => 20,
+                'image_path' => 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?q=80&w=400&auto=format&fit=crop',
             ],
             [
                 'category' => 'Accessories',
@@ -101,6 +110,7 @@ class ProductSeeder extends Seeder
                 'price' => 29.99,
                 'stock_quantity' => 150,
                 'low_stock_threshold' => 30,
+                'image_path' => 'https://images.unsplash.com/photo-1603539947678-eb3de6348364?q=80&w=400&auto=format&fit=crop',
             ],
             [
                 'category' => 'Accessories',
@@ -109,6 +119,7 @@ class ProductSeeder extends Seeder
                 'price' => 49.99,
                 'stock_quantity' => 75,
                 'low_stock_threshold' => 15,
+                'image_path' => 'https://images.unsplash.com/photo-1622445275463-afa2ab738c34?q=80&w=400&auto=format&fit=crop',
             ],
             
             // Audio
@@ -119,6 +130,7 @@ class ProductSeeder extends Seeder
                 'price' => 249.99,
                 'stock_quantity' => 60,
                 'low_stock_threshold' => 15,
+                'image_path' => 'https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?q=80&w=400&auto=format&fit=crop',
             ],
             [
                 'category' => 'Audio',
@@ -127,6 +139,7 @@ class ProductSeeder extends Seeder
                 'price' => 399.99,
                 'stock_quantity' => 40,
                 'low_stock_threshold' => 10,
+                'image_path' => 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=400&auto=format&fit=crop',
             ],
             [
                 'category' => 'Audio',
@@ -135,6 +148,7 @@ class ProductSeeder extends Seeder
                 'price' => 129.99,
                 'stock_quantity' => 55,
                 'low_stock_threshold' => 12,
+                'image_path' => 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?q=80&w=400&auto=format&fit=crop',
             ],
             
             // Wearables
@@ -145,6 +159,7 @@ class ProductSeeder extends Seeder
                 'price' => 399.99,
                 'stock_quantity' => 45,
                 'low_stock_threshold' => 10,
+                'image_path' => 'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?q=80&w=400&auto=format&fit=crop',
             ],
             [
                 'category' => 'Wearables',
@@ -153,6 +168,7 @@ class ProductSeeder extends Seeder
                 'price' => 299.99,
                 'stock_quantity' => 38,
                 'low_stock_threshold' => 10,
+                'image_path' => 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?q=80&w=400&auto=format&fit=crop',
             ],
             [
                 'category' => 'Wearables',
@@ -161,6 +177,7 @@ class ProductSeeder extends Seeder
                 'price' => 159.99,
                 'stock_quantity' => 7,
                 'low_stock_threshold' => 10,
+                'image_path' => 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b0?q=80&w=400&auto=format&fit=crop',
             ],
         ];
 
@@ -168,17 +185,22 @@ class ProductSeeder extends Seeder
             $category = Category::where('name', $productData['category'])->first();
             
             if ($category) {
-                Product::create([
-                    'category_id' => $category->id,
-                    'name' => $productData['name'],
-                    'slug' => Str::slug($productData['name']),
-                    'description' => $productData['description'],
-                    'price' => $productData['price'],
-                    'stock_quantity' => $productData['stock_quantity'],
-                    'low_stock_threshold' => $productData['low_stock_threshold'],
-                    'is_active' => true,
-                ]);
+                // Use updateOrCreate so running the seeder again updates the images instead of duplicating
+                Product::updateOrCreate(
+                    ['name' => $productData['name']],
+                    [
+                        'category_id' => $category->id,
+                        'slug' => Str::slug($productData['name']),
+                        'description' => $productData['description'],
+                        'price' => $productData['price'],
+                        'stock_quantity' => $productData['stock_quantity'],
+                        'low_stock_threshold' => $productData['low_stock_threshold'],
+                        'image_path' => $productData['image_path'],
+                        'is_active' => true,
+                    ]
+                );
             }
         }
     }
 }
+
