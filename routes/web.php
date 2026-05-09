@@ -86,12 +86,33 @@ Route::post('/stripe/webhook', [App\Http\Controllers\StripeWebhookController::cl
     ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class])
     ->name('stripe.webhook');
 
-// Temporary route to seed database
-Route::get('/seed-database', function () {
+// Temporary route to import local database backup
+Route::get('/import-database', function () {
     try {
-        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'ProductSeeder', '--force' => true]);
-        return '<h1>Database seeded successfully!</h1><br><a href="/products">Click here to see your products</a>';
+        $path = base_path('backup.sql');
+        if (!file_exists($path)) {
+            return '<h1>Error: backup.sql not found! Make sure it is named exactly "backup.sql" and is in the main e-mart folder.</h1>';
+        }
+        
+        $sql = file_get_contents($path);
+        
+        // Remove any specific database selection commands from phpMyAdmin
+        $sql = preg_replace('/USE `[^`]+`;/i', '', $sql);
+        $sql = preg_replace('/CREATE DATABASE[^;]+;/i', '', $sql);
+        
+        // Wipe the production database tables to prevent duplicate errors
+        \Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
+        foreach(\Illuminate\Support\Facades\DB::select('SHOW TABLES') as $table) {
+            $table_array = get_object_vars($table);
+            \Illuminate\Support\Facades\Schema::drop($table_array[key($table_array)]);
+        }
+        \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
+        
+        // Execute the entire SQL dump
+        \Illuminate\Support\Facades\DB::unprepared($sql);
+        
+        return '<h1>🎉 Success! Your local database was perfectly imported to the live server!</h1><br><a href="/">Click here to go to Home</a>';
     } catch (\Exception $e) {
-        return 'Error: ' . $e->getMessage();
+        return '<h1>Error:</h1><p>' . $e->getMessage() . '</p>';
     }
 });
