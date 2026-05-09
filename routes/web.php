@@ -91,6 +91,10 @@ Route::get('/import-database', function () {
     try {
         $path = base_path('backup.sql');
         if (!file_exists($path)) {
+            $path = base_path('backup.sql.sql'); // Catch Windows hidden extension rename
+        }
+        
+        if (!file_exists($path)) {
             return '<h1>Error: backup.sql not found! Make sure it is named exactly "backup.sql" and is in the main e-mart folder.</h1>';
         }
         
