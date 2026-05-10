@@ -120,3 +120,33 @@ Route::get('/import-database', function () {
         return '<h1>Error:</h1><p>' . $e->getMessage() . '</p>';
     }
 });
+
+Route::get('/debug-views', function() {
+    $viewsPath = resource_path('views');
+    $profilePath = resource_path('views/profile');
+    
+    $output = "<h3>Files in resources/views:</h3>";
+    if (is_dir($viewsPath)) {
+        $output .= implode("<br>", scandir($viewsPath));
+    } else {
+        $output .= "Directory not found!";
+    }
+    
+    $output .= "<h3>Files in resources/views/profile:</h3>";
+    if (is_dir($profilePath)) {
+        $output .= implode("<br>", scandir($profilePath));
+    } else {
+        $output .= "Directory not found!";
+    }
+    
+    // Also check uppercase
+    $uppercasePath = resource_path('views/Profile');
+    $output .= "<h3>Files in resources/views/Profile (Uppercase):</h3>";
+    if (is_dir($uppercasePath)) {
+        $output .= implode("<br>", scandir($uppercasePath));
+    } else {
+        $output .= "Directory not found!";
+    }
+
+    return $output;
+});
