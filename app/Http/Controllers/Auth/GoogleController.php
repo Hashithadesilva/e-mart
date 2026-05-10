@@ -15,7 +15,9 @@ class GoogleController extends Controller
      */
     public function redirect()
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')
+            ->redirectUrl(route('auth.google.callback'))
+            ->redirect();
     }
 
     /**
@@ -25,7 +27,9 @@ class GoogleController extends Controller
     public function callback()
     {
         try {
-            $googleUser = Socialite::driver('google')->user();
+            $googleUser = Socialite::driver('google')
+                ->redirectUrl(route('auth.google.callback'))
+                ->user();
         } catch (\Exception $e) {
             return redirect()->route('login')
                 ->withErrors(['email' => 'Google login failed. Please try again.']);
