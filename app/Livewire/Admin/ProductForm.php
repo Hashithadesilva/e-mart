@@ -100,7 +100,7 @@ class ProductForm extends Component
             session()->flash('success', 'Product created successfully!');
         }
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products');
     }
 
     public function render()
